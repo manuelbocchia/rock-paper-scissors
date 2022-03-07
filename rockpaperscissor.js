@@ -1,13 +1,14 @@
-console.log("Hello world!")
+console.log("Let's play rock, paper, scissors!")
 
+console.log("Best of 5, first to get 3 points wins!")
+
+/* first, random generator of computer play */
 function computerPlay() {
     let play = ["rock", "paper", "scissors"];
     let randomPlay = Math.floor(Math.random() * 3);
     return play[randomPlay];
 }
-
-console.log(computerPlay())
-
+ /* then the round player, where we see who wins */
 function playRound(computerSelection, playerSelection) {
     if (computerSelection === playerSelection) {
             return "Tied"} 
@@ -30,7 +31,7 @@ function playRound(computerSelection, playerSelection) {
 function play() {
     let scoreComp = 0;
     let scorePlayer = 0;
-    for (let i=0; i<5; i++) {
+    while (scoreComp < 3 && scorePlayer < 3) {
         let playerChoice = window.prompt("Choose Rock, Paper, Scissor").toLowerCase();
         let result = playRound(computerPlay(),playerChoice)
         switch (result) {
@@ -58,15 +59,16 @@ function play() {
     console.log(result+" "+"Score:"+"Player: "+scorePlayer+". Computer: "+scoreComp)
     }
     let winner = ""
-    if (scoreComp > scorePlayer) {
+    if (scoreComp === 3) {
         winner = "Computer"
-    } else if (scorePlayer > scoreComp) {
+    } else if (scorePlayer === 3) {
         winner = "Player"
     } else {
         winner = "None"
     }
     
     console.log("And the winner is: "+winner+" !!")
+    console.log("Well played!")
 }
 
 play();
