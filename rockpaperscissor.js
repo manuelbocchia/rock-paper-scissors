@@ -27,7 +27,8 @@ function playRound(computerSelection, playerSelection) {
             else {
             return "Something went wrong, try again!"}
     }
-     
+
+/* now for the actual game, we analyze the play and keep score, as long as noone has 3 points, the game keeps playing */
 function play() {
     let scoreComp = 0;
     let scorePlayer = 0;
