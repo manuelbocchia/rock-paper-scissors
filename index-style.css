@@ -1,0 +1,42 @@
+#logo {
+        display:flex;
+        margin: auto;
+        justify-content: center;
+}
+
+#page  {
+        display:flex;
+        margin:auto;
+        justify-content: center;
+        align-items: center;
+}
+.text   {
+    display:flex;
+    margin:auto;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-banner {
+    display:flex;
+    margin: auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#game-area {
+    display: flex;
+    justify-content: space-around;
+    margin: 0vw 30vw;
+}
+
+.handImg {
+    max-width: 30vw;
+    border: 3px double black;
+}
+
+.touched {
+    border: 4px double green;
+    padding: 2px;
+    background-color: red;
+}
