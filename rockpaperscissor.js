@@ -1,6 +1,14 @@
-console.log("Let's play rock, paper, scissors!")
 
-console.log("Best of 5, first to get 3 points wins!")
+
+
+
+const roundResult = document.querySelector("#result");
+const userPlay = document.querySelector("#user");
+const PCPlay = document.querySelector("#PC");
+const showScore = document.querySelector("#score");
+
+roundResult.innerText = "What's your move?"
+
 
 /* first, random generator of computer play */
 function computerPlay() {
@@ -28,48 +36,102 @@ function playRound(computerSelection, playerSelection) {
             return "Something went wrong, try again!"}
     }
 
+let score = {
+    user:0,
+    PC:0
+}
+
+showScore.innerText = `"You ${score.user} VS It ${score.user}"`
+
+const handPlay = document.createElement("img");
+handPlay.id = "userPlay"
+
+const PChand = document.createElement("img");
+PChand.id = "PCPlay"
+
+userPlay.appendChild(handPlay);
+PCPlay.appendChild(PChand);
+
+
+const imageSrc = {
+    rock : "Rock.png",
+    paper : "Paper.png",
+    scissors : "Scissor.png"
+}
+
 /* now for the actual game, we analyze the play and keep score, as long as noone has 3 points, the game keeps playing */
 function play() {
-    let scoreComp = 0;
-    let scorePlayer = 0;
-    while (scoreComp < 3 && scorePlayer < 3) {
-        let playerChoice = window.prompt("Choose Rock, Paper, Scissor").toLowerCase();
-        let result = playRound(computerPlay(),playerChoice)
+        let playerChoice = playerChoiceArr[0];
+        let PCChoice = computerPlay();
+        let result = playRound(PCChoice,playerChoice)
         switch (result) {
             case "Tied":
                 break;
             case "You win! Paper beats Rock":
-                scorePlayer += 1;
+                score.user ++;
                 break;
             case "You win! Rock beats Scissors":
-                scorePlayer += 1;
+                score.user ++;
                 break;
             case "You win! Scissors beat Paper":
-                scorePlayer += 1;
+                score.user ++;
                 break;
             case "You lose! Paper beats Rock":
-                scoreComp += 1;
+                score.PC ++;
                 break;
             case "You lose! Scissors beat Paper":
-                scoreComp += 1;
+                score.PC ++;
                 break;
             case "You lose! Rock beats Scissors":
-                scoreComp += 1;
+                score.PC ++;
                 break;
         }
-    console.log(result+" "+"Score:"+"Player: "+scorePlayer+". Computer: "+scoreComp)
-    }
-    let winner = ""
-    if (scoreComp === 3) {
-        winner = "Computer"
-    } else if (scorePlayer === 3) {
-        winner = "Player"
-    } else {
-        winner = "None"
-    }
     
-    console.log("And the winner is: "+winner+" !!")
-    console.log("Well played!")
-}
+    showScore.innerText = `You ${score.user} VS It ${score.PC}`;
+    
+    handPlay.src = imageSrc[`${playerChoice}`]
 
-play();
+    PChand.src = imageSrc[`${PCChoice}`]
+
+    roundResult.innerText = `${result}`
+
+    console.log(imageSrc[`${playerChoice}`])
+    console.log(imageSrc[`${PCChoice}`])
+
+    }
+
+
+    
+    // Create the system for getting the player's choice
+
+    playerChoiceArr = ["rock"];
+
+    const weapons = document.querySelectorAll(".handImg")
+    
+    weapons.forEach( elem=> {
+        elem.addEventListener('pointerdown', (e) => {
+            playerChoiceArr.pop();
+            playerChoiceArr.push(`${elem.id}`);
+            console.log(playerChoiceArr);
+            play()
+        })
+    })
+    
+
+// Some simple class manipulation to give it the animation of popping
+
+
+
+const images = document.querySelectorAll(".handImg") 
+
+
+images.forEach( elem => {
+    elem.addEventListener('pointerdown', function (e) {
+    elem.classList.add("touched");
+  });
+    elem.addEventListener('pointerup', function (e) {
+    elem.classList.remove("touched");
+  })
+    })
+
+

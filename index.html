@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width">
 
     <title>Rock Paper Scissors</title>
-    <!-- <script src="rockpaperscissor.js"></script> -->
+    
     <link rel="stylesheet" href="index-style.css">
   </head>
 
@@ -14,13 +14,20 @@
  <div id="page">
     <img src="Logo.png" id="logo">
   </div>
-  <div id="game-banner">
+  <div id="gameBanner" class="banner">
     <h1 id="title" class="text">Let's play</h1>
     <h2 id="subtitle" class="text">Choose your weapon</h2>
-  <div id="game-area">
+
+  <div id="gameArea">
+    <div id="resultArea">
+      <div id="PC"></div>
+      <div id="result"></div>
+      <div id="user"></div>
+      <div id="score"></div>
+    </div>
     <input type="image" id="rock"  class="handImg" src="Rock.png" >
     <input type="image" id="paper" class="handImg" src="Paper.png" >
-    <input type="image" id="scissor" class="handImg" src="Scissor.png" >
+    <input type="image" id="scissors" class="handImg" src="Scissor.png" >
   </div>
   
   </div>
@@ -28,18 +35,4 @@
 
 </html>
 
-<script>
-  const images = document.querySelectorAll(".handImg") 
-  
-  console.log(images)
-
-  images.forEach( elem => {
-  elem.addEventListener('pointerdown', function (e) {
-  elem.classList.add("touched");
-});
-  elem.addEventListener('pointerup', function (e) {
-  elem.classList.remove("touched");
-})
-  });
-
-</script>
+<script src="rockpaperscissor.js"></script>

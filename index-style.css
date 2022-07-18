@@ -17,17 +17,18 @@
     align-items: center;
 }
 
-#game-banner {
+#gamebanner {
     display:flex;
     margin: auto;
     justify-content: center;
     flex-direction: column;
 }
 
-#game-area {
+#gamearea {
     display: flex;
     justify-content: space-around;
     margin: 0vw 30vw;
+    padding: 10vw;
 }
 
 .handImg {
@@ -39,4 +40,21 @@
     border: 4px double green;
     padding: 2px;
     background-color: red;
+}
+
+#userPlay {
+    max-width: 15vw;
+}
+
+#PCPlay {
+    max-width: 15vw;
+    transform: rotate(180deg)
+}
+
+#resultArea {
+    display:flex;
+    margin:auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
