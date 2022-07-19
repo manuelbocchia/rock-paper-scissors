@@ -117,6 +117,8 @@ function play() {
             }
             play()
 
+// Added the limit of 5 rounds, to show the result.
+
     if (score.PC === 5 || score.user === 5) {
         const endGame = document.createElement("h1");
         endGame.id = "endGame";
@@ -127,6 +129,8 @@ function play() {
         endGame.innerText = "And the winner is YOU!"
         }
     };
+
+// This the ugly one about removing the Message, generates error the first couple or rounds but it works
 
     if ((score.PC === 0 && score.user === 0) || (score.PC === 1 && score.user === 0) || (score.PC === 0 && score.user === 1) ) {
         const endGame = document.querySelector("#endGame");
