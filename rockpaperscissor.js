@@ -59,7 +59,7 @@ const imageSrc = {
     scissors : "Scissor.png"
 }
 
-/* now for the actual game, we analyze the play and keep score, as long as noone has 3 points, the game keeps playing */
+/* now for the actual game, we analyze the play and keep score */
 function play() {
         let playerChoice = playerChoiceArr[0];
         let PCChoice = computerPlay();
@@ -95,9 +95,6 @@ function play() {
 
     roundResult.innerText = `${result}`
 
-    console.log(imageSrc[`${playerChoice}`])
-    console.log(imageSrc[`${PCChoice}`])
-
     }
 
 
@@ -106,16 +103,39 @@ function play() {
 
     playerChoiceArr = ["rock"];
 
-    const weapons = document.querySelectorAll(".handImg")
+    const weapons = document.querySelectorAll(".handImg");
+    
+    const weaponDiv =  document.querySelector("#weapons");
     
     weapons.forEach( elem=> {
         elem.addEventListener('pointerdown', (e) => {
             playerChoiceArr.pop();
             playerChoiceArr.push(`${elem.id}`);
-            console.log(playerChoiceArr);
+            if (score.PC === 5 || score.user === 5) {
+                score.PC = 0;
+                score.user = 0;
+            }
             play()
-        })
-    })
+
+    if (score.PC === 5 || score.user === 5) {
+        const endGame = document.createElement("h1");
+        endGame.id = "endGame";
+        gameArea.insertBefore(endGame, weaponDiv);
+        if (score.PC === 5) {
+        endGame.innerText = "And the winner is the computer!"
+        } else {
+        endGame.innerText = "And the winner is YOU!"
+        }
+    };
+
+    if ((score.PC === 0 && score.user === 0) || (score.PC === 1 && score.user === 0) || (score.PC === 0 && score.user === 1) ) {
+        const endGame = document.querySelector("#endGame");
+        endGame.remove();
+        }
+    
+}
+        )
+})
     
 
 // Some simple class manipulation to give it the animation of popping

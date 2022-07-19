@@ -2,6 +2,7 @@
         display:flex;
         margin: auto;
         justify-content: center;
+        max-width: 20vw;
 }
 
 #page  {
@@ -26,13 +27,19 @@
 
 #gamearea {
     display: flex;
-    justify-content: space-around;
     margin: 0vw 30vw;
     padding: 10vw;
 }
 
+#weapons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+}
+
 .handImg {
-    max-width: 30vw;
+    max-width: 20vw;
     border: 3px double black;
 }
 
@@ -57,4 +64,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+
+#endGame {
+    display:flex;
+    margin:auto;
+    justify-content: center;
+    align-items: center;
 }
